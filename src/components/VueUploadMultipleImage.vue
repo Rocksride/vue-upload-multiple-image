@@ -113,6 +113,10 @@ export default {
   name: 'VueUploadMultipleImage',
 
   props: {
+    maxImageSize: {
+      type: [String, Number],
+      default: +Infinity
+    },
     dragText: {
       type: String,
       default: 'Kéo hình ảnh(nhiều)'
@@ -226,9 +230,14 @@ export default {
       this.isDragover = true
     },
     createImage (file) {
+      if (file.size > +this.maxImageSize) {
+        this.$emit('size-exceeded');
+        return;
+      }
       let reader = new FileReader()
       let formData = new FormData()
       formData.append('file', file)
+      debugger;
       reader.onload = (e) => {
         let dataURI = e.target.result
         if (dataURI) {
