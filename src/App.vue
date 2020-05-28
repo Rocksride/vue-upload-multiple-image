@@ -6,6 +6,7 @@
       @edit-image="editImage"
       @data-change="dataChange"
       @limit-exceeded="limitExceeded"
+      :maxImageSize="2"
       @size-exceeded="sizeExceeded"
       ></vue-upload-multiple-image>
   </div>
@@ -24,6 +25,9 @@ export default {
     VueUploadMultipleImage
   },
   methods: {
+    sizeExceeded() {
+      alert('too big');
+    },
     uploadImageSuccess(formData, index, fileList) {
       console.log('data', formData, index, fileList)
       // Upload image api

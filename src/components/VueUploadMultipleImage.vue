@@ -230,14 +230,13 @@ export default {
       this.isDragover = true
     },
     createImage (file) {
-      if (file.size > +this.maxImageSize) {
+      if (file.size / (1024*1024) > +this.maxImageSize) {
         this.$emit('size-exceeded');
         return;
       }
       let reader = new FileReader()
       let formData = new FormData()
       formData.append('file', file)
-      debugger;
       reader.onload = (e) => {
         let dataURI = e.target.result
         if (dataURI) {
