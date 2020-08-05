@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "lodash": "^4.17.11",
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.findindex": "^4.6.0",
+    "lodash.foreach": "^4.5.0",
+    "lodash.orderby": "^4.6.0",
     "vue": "^2.5.11",
-    "vue-image-lightbox-carousel": "^1.0.7",
-    "vue-popperjs": "^1.5.3"
+    "vue-image-lightbox-carousel": "^1.0.7"
   },
   "browserslist": [
     "> 1%",

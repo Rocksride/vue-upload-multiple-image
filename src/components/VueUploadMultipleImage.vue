@@ -49,14 +49,6 @@
               <svg class="image-icon-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><circle fill="#10BC83" cx="256" cy="256" r="256"></circle><path fill="#FFF" d="M216.7 350.9h-.1c-5.1 0-9.9-2.1-13.4-5.7l-74.2-76c-7.4-7.5-7.2-19.5.4-26.8 7.5-7.4 19.5-7.2 26.8.4L217 305l139.7-138.5c7.5-7.4 19.5-7.4 26.8.1s7.4 19.5-.1 26.8l-153.2 152c-3.7 3.5-8.5 5.5-13.5 5.5z"></path></svg>
               {{primaryText}}
             </span>
-            <popper trigger="click" :options="{placement: 'top'}">
-              <div class="popper popper-custom">
-                {{popupText}}
-              </div>
-              <i slot="reference" class="cursor-pointer display-flex align-items-center">
-                <svg class="image-icon-info" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 32c30.3 0 59.6 5.9 87.2 17.6 26.7 11.3 50.6 27.4 71.2 48s36.7 44.5 48 71.2c11.7 27.6 17.6 56.9 17.6 87.2s-5.9 59.6-17.6 87.2c-11.3 26.7-27.4 50.6-48 71.2s-44.5 36.7-71.2 48C315.6 474.1 286.3 480 256 480s-59.6-5.9-87.2-17.6c-26.7-11.3-50.6-27.4-71.2-48s-36.7-44.5-48-71.2C37.9 315.6 32 286.3 32 256s5.9-59.6 17.6-87.2c11.3-26.7 27.4-50.6 48-71.2s44.5-36.7 71.2-48C196.4 37.9 225.7 32 256 32m0-32C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0z"></path><path d="M304.2 352H296c-4.4 0-8-3.6-8-8v-94.8c0-15.3-11.5-28.1-26.7-29.8-2.5-.3-4.8-.5-6.7-.5-23.7 0-44.6 11.9-57 30.1l-.1.1v-.1c-1 2-1.7 5.3.7 6.5.6.3 1.2.5 1.8.5h16c4.4 0 8 3.6 8 8v80c0 4.4-3.6 8-8 8h-8.2c-8.7 0-15.8 7.1-15.8 15.8v.3c0 8.7 7.1 15.8 15.8 15.8h96.4c8.7 0 15.8-7.1 15.8-15.8v-.3c0-8.7-7.1-15.8-15.8-15.8zM256 128c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32z"></path></svg>
-              </i>
-            </popper>
           </div>
           <a class="text-small mark-text-primary cursor-pointer" @click.prevent="markIsPrimary(currentIndexImage)" v-show="!imageDefault">{{markIsPrimaryText}}</a>
         </div>
@@ -104,9 +96,10 @@
 </template>
 
 <script>
-import { forEach, findIndex, orderBy, cloneDeep } from 'lodash'
-import Popper from 'vue-popperjs'
-import 'vue-popperjs/dist/css/vue-popper.css'
+import forEach from 'lodash.foreach';
+import findIndex from 'lodash.findindex';
+import orderBy from 'lodash.orderby';
+import cloneDeep from 'lodash.clonedeep';
 import VueImageLightboxCarousel from 'vue-image-lightbox-carousel'
 export default {
 
@@ -182,7 +175,6 @@ export default {
     }
   },
   components: {
-    Popper,
     VueImageLightboxCarousel
   },
   computed: {
@@ -619,19 +611,5 @@ export default {
 }
 .mark-text-primary {
   color: #034694;
-}
-.popper-custom {
-  background: #000;
-  padding: 10px;
-  border: none;
-  box-shadow: none;
-  color: white;
-  text-align: left;
-  font-size: 12px;
-}
-</style>
-<style lang="css">
-.popper-custom .popper__arrow {
-  border-color: #000 transparent transparent transparent !important;
 }
 </style>
